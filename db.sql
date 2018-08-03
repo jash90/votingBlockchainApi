@@ -1,3 +1,5 @@
+votingOnlineDb
+
 CREATE TABLE "user" (
 	"Id" serial NOT NULL,
 	"login" VARCHAR(255) NOT NULL,
