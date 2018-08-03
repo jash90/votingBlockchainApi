@@ -1,9 +1,23 @@
-votingOnlineDb
+CREATE USER admin WITH
+	LOGIN
+	SUPERUSER
+	CREATEDB
+	CREATEROLE
+	INHERIT
+	NOREPLICATION
+	CONNECTION LIMIT -1
+	PASSWORD 'admin';
 
+CREATE DATABASE "votingOnlineDb"
+    WITH 
+    OWNER = admin
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+		
 CREATE TABLE "user" (
 	"Id" serial NOT NULL,
-	"login" VARCHAR(255) NOT NULL,
-	"password" VARCHAR(255) NOT NULL,
+	"login" VARCHAR(50) NOT NULL UNIQUE,
+	"password" VARCHAR(64) NOT NULL,
 	"userRoleId" integer NOT NULL,
 	CONSTRAINT user_pk PRIMARY KEY ("Id")
 ) WITH (
@@ -14,7 +28,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "userRole" (
 	"Id" serial NOT NULL,
-	"name" serial(255) NOT NULL,
+	"name" VARCHAR(50) NOT NULL,
 	CONSTRAINT userRole_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -24,9 +38,9 @@ CREATE TABLE "userRole" (
 
 CREATE TABLE "question" (
 	"Id" serial NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
-	"multiAnswer" BOOLEAN NOT NULL DEFAULT 'false',
-	"userRoleId" integer NOT NULL DEFAULT 'false',
+	"name" VARCHAR(100) NOT NULL,
+	"multiAnswer" BOOLEAN NOT NULL DEFAULT false,
+	"userRoleId" integer NOT NULL,
 	CONSTRAINT question_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -36,7 +50,7 @@ CREATE TABLE "question" (
 
 CREATE TABLE "answer" (
 	"Id" serial NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"name" VARCHAR(100) NOT NULL,
 	"questionId" integer NOT NULL,
 	"userRoleId" integer NOT NULL,
 	CONSTRAINT answer_pk PRIMARY KEY ("Id")
@@ -58,7 +72,7 @@ CREATE TABLE "answerUser" (
 CREATE TABLE "token" (
 	"Id" serial NOT NULL,
 	"userId" integer NOT NULL,
-	"token" VARCHAR(255) NOT NULL,
+	"token" VARCHAR(64) NOT NULL,
 	CONSTRAINT token_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -79,4 +93,4 @@ ALTER TABLE "answerUser" ADD CONSTRAINT "answerUser_fk1" FOREIGN KEY ("answerId"
 
 ALTER TABLE "token" ADD CONSTRAINT "token_fk0" FOREIGN KEY ("userId") REFERENCES "user"("Id");
 
-ALTER TABLE "user" ADD UNIQUE (login);
+-- ALTER TABLE "user" ADD UNIQUE (login);
