@@ -93,4 +93,13 @@ ALTER TABLE "answerUser" ADD CONSTRAINT "answerUser_fk1" FOREIGN KEY ("answerId"
 
 ALTER TABLE "token" ADD CONSTRAINT "token_fk0" FOREIGN KEY ("userId") REFERENCES "user"("Id");
 
--- ALTER TABLE "user" ADD UNIQUE (login);
+-- Create userRole
+
+INSERT INTO public."userRole"(name)
+	VALUES ('admin');
+
+INSERT INTO public."userRole"(name)
+	VALUES ('teacher');
+
+INSERT INTO public."userRole"(name)
+	VALUES ('student');
