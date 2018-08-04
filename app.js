@@ -11,6 +11,8 @@ var user = require("./routes/user");
 var loginUser = require("./routes/loginUser");
 var registerUser = require("./routes/registerUser");
 var getQuestions = require("./routes/getQuestions");
+var getAnswers = require("./routes/getAnswers");
+
 var app = express();
 
 // view engine setup
@@ -29,6 +31,7 @@ app.use('/', routes);
 app.use('/register',registerUser);
 app.use('/login', loginUser);
 app.use("/questions", getQuestions);
+app.use("/answers", getAnswers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
