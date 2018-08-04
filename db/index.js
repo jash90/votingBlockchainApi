@@ -1,5 +1,5 @@
 const {Pool} = require('pg')
-const pool = new Pool({user: "admin", host: "localhost", database: "votingOnlineDb", password: "admin", port: 5432});
+const pool = new Pool({ user: "admin", host: "80.211.222.149", database: "votingOnlineDb", password: "admin", port: 5432});
 
 const status = require("../status");
 

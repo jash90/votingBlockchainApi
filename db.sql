@@ -111,4 +111,4 @@ INSERT INTO public."userRole"(name)
 -- Insert admin
 
 INSERT INTO public."user"("Id", login, password, "userRoleId")
-	VALUES (1,"admin","e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35",3);
+	VALUES (1,'admin','e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35',3);
