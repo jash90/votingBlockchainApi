@@ -1,7 +1,7 @@
 var router = require("express").Router();
 
-const db = require("../db");
-const status = require("../status");
+const db = require("../../db");
+const status = require("../../status");
 
 const crypto = require("crypto-js");
 

@@ -6,12 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var user = require("./routes/user");
-var loginUser = require("./routes/loginUser");
-var registerUser = require("./routes/registerUser");
-var getQuestions = require("./routes/getQuestions");
-var getAnswers = require("./routes/getAnswers");
+
+var loginUser = require("./routes/auth/loginUser");
+var registerUser = require("./routes/auth/registerUser");
+var getQuestions = require("./routes/question/getQuestions");
+var getAnswers = require("./routes/answer/getAnswers");
 
 var app = express();
 
