@@ -3,14 +3,16 @@ var router = require("express").Router();
 const db = require("../db");
 const status = require("../status");
 
-const sha256 = require("crypto-js/sha256");
+const crypto = require("crypto-js");
 
 // export our router to be mounted by the parent application
 
 router.post("/", function(req, res) {
   var user = req.body.username;
   var pass = req.body.password;
-  pass = sha256(pass);
+
+  pass = crypto.SHA256(pass).toString(crypto.enc.Hex);
+
   db.query(
     `INSERT INTO public."user" (login, password, "userRoleId")
 	VALUES($1, $2, 3);`,
@@ -25,7 +27,7 @@ router.post("/", function(req, res) {
     .catch(error => {
       res.json({
         status: status.Error.code,
-        message: error.detail
+        message: error
       });
     });
 });
