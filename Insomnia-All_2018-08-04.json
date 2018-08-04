@@ -1,0 +1,114 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-08-04T11:56:34.417Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"created": 1532976914865,
+			"description": "",
+			"modified": 1532976914865,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_926e72392921482eb1f8fd5570564044",
+			"color": null,
+			"created": 1532976914904,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1532976914904,
+			"modified": 1533375361138,
+			"name": "New Environment",
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_22ad1e9ca74849eba26493009cc0045b",
+			"cookies": [],
+			"created": 1532976914906,
+			"modified": 1532976914906,
+			"name": "Default Jar",
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_e3d2a89915654cd092e16748228d8289",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"username\": \"admin\", \"password\":\"B2r#e4\"}"
+			},
+			"created": 1532976933193,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_a13f4888146844068e3005c2d7096fc8",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_9e7eb76a8d864ebd904131c042132886",
+					"name": "",
+					"value": ""
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1532976933193,
+			"method": "POST",
+			"modified": 1533383213403,
+			"name": "login",
+			"parameters": [
+				{
+					"disabled": true,
+					"id": "pair_49915007abeb40da926c4e145b9c0921",
+					"name": "id",
+					"value": "12"
+				}
+			],
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_29f8c37060f44e2591d740bfa5f107ee",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"token\": \"f343985a3f7b691acf04f7c86ddd1958cebca43c7b96d0799186c71d3b759c94\"}"
+			},
+			"created": 1533381574084,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9d350144f45f4c1a968499affed2b590",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1533381574084,
+			"method": "POST",
+			"modified": 1533383190118,
+			"name": "questions",
+			"parameters": [],
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/questions",
+			"_type": "request"
+		}
+	]
+}
