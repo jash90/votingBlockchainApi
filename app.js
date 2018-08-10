@@ -9,8 +9,16 @@ var routes = require('./routes/index');
 
 var loginUser = require("./routes/auth/loginUser");
 var registerUser = require("./routes/auth/registerUser");
+
 var getQuestions = require("./routes/question/getQuestions");
+var addQuestion = require("./routes/question/addQuestion");
+var removeQuestion = require("./routes/question/removeQuestion");
+
 var getAnswers = require("./routes/answer/getAnswers");
+
+var getUserRole = require("./routes/userRole/getUserRole");
+var addUserRole = require("./routes/userRole/addUserRole");
+var removeUserRole = require("./routes/userRole/removeUserRole");
 
 var app = express();
 
@@ -27,10 +35,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+
 app.use('/register',registerUser);
 app.use('/login', loginUser);
+
 app.use("/questions", getQuestions);
+app.use("/addquestion", addQuestion);
+app.use("/removequestions", removeQuestion);
+
 app.use("/answers", getAnswers);
+
+app.use("/adduserrole", addUserRole);
+app.use("/removeuserrole", removeUserRole);
+app.use("/getuserrole",getUserRole);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
