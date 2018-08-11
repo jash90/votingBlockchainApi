@@ -6,14 +6,14 @@ const status = require("../../status");
 const crypto = require("crypto-js");
 
 router.post("/", (req, res) => {
-  var Id = req.body.Id;
+  var userRoleId = req.body.userRoleId;
   var token = req.body.token;
   db.auth(token).then(response => {
     if (response.status == 200 && response.data.userRoleId == 1 && Id != 1) {
       db.query(
         `DELETE FROM public."userRole"
 	WHERE Id = $1`,
-        [Id]
+        [userRoleId]
       )
         .then(data2 => {
           res.json({

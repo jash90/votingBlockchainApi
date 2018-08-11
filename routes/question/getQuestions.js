@@ -21,7 +21,10 @@ router.post("/", (req, res) => {
           res.json({ status: status.Error.code, message: error2.detail });
         });
     } else {
-      res.json(response);
+      res.json({
+        status: status.Unauthorized.code,
+        message: status.Unauthorized.message
+      });
     }
   });
 });

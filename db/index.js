@@ -3,7 +3,7 @@ const pool = new Pool({
   user: "admin",
   host: "80.211.222.149",
   database: "votingOnlineDb",
-  password: "admin",
+  password: "psB2r#e4",
   port: 5432
 });
 

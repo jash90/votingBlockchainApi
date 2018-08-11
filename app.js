@@ -14,7 +14,10 @@ var getQuestions = require("./routes/question/getQuestions");
 var addQuestion = require("./routes/question/addQuestion");
 var removeQuestion = require("./routes/question/removeQuestion");
 
+var addAnswer = require("./routes/answer/addAnswer");
 var getAnswers = require("./routes/answer/getAnswers");
+
+var addAnswerUser = require("./routes/answerUser/addAnswerUser");
 
 var getUserRole = require("./routes/userRole/getUserRole");
 var addUserRole = require("./routes/userRole/addUserRole");
@@ -43,7 +46,10 @@ app.use("/questions", getQuestions);
 app.use("/addquestion", addQuestion);
 app.use("/removequestions", removeQuestion);
 
+app.use("/addanswer", addAnswer);
 app.use("/answers", getAnswers);
+
+app.use("/addansweruser", addAnswerUser);
 
 app.use("/adduserrole", addUserRole);
 app.use("/removeuserrole", removeUserRole);
