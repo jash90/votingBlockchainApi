@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-08-04T11:56:34.417Z",
+	"__export_date": "2018-08-12T16:22:32.609Z",
 	"__export_source": "insomnia.desktop.app:v6.0.2",
 	"resources": [
 		{
@@ -58,7 +58,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1532976933193,
 			"method": "POST",
-			"modified": 1533383213403,
+			"modified": 1534012385172,
 			"name": "login",
 			"parameters": [
 				{
@@ -83,7 +83,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\"token\": \"f343985a3f7b691acf04f7c86ddd1958cebca43c7b96d0799186c71d3b759c94\"}"
+				"text": "{\n\t\"token\": \"e247169b6e255a9ed1593f8fad1c0d3ded9164f4dbbbdee8b9281593454fb74f\",\n\t\"answerId\": 1\n}"
 			},
 			"created": 1533381574084,
 			"description": "",
@@ -97,7 +97,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1533381574084,
 			"method": "POST",
-			"modified": 1533383190118,
+			"modified": 1534012563679,
 			"name": "questions",
 			"parameters": [],
 			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
@@ -107,7 +107,71 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "http://localhost:3000/questions",
+			"url": "http://localhost:3000/addansweruser",
+			"_type": "request"
+		},
+		{
+			"_id": "req_58dc3aac233a4ac18040a5b529ce70de",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"token\": \"e247169b6e255a9ed1593f8fad1c0d3ded9164f4dbbbdee8b9281593454fb74f\",\n\t\"questionId\": 2\n}"
+			},
+			"created": 1533405271217,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_b5ddffa585f74ff4bd9181c5345693d0",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1533405271217,
+			"method": "POST",
+			"modified": 1534012559239,
+			"name": "answers",
+			"parameters": [],
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/answers",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b20579fd3ebe42828d5d36c15bd23870",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"username\":\"body\", \"password\":\"body\"}"
+			},
+			"created": 1533405366679,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_8a898536659246b7bbacad8e273caaa6",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1533405366679,
+			"method": "POST",
+			"modified": 1533841740280,
+			"name": "register",
+			"parameters": [],
+			"parentId": "wrk_085d5192fbc0458eba1a7c99cc3ec55b",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/register",
 			"_type": "request"
 		}
 	]
