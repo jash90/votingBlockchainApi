@@ -15,10 +15,10 @@ CREATE DATABASE "votingOnlineDb"
     CONNECTION LIMIT = -1;
 		
 CREATE TABLE "answer" (
-	"Id" serial NOT NULL,
+	"Id" SERIAL NOT NULL,
 	"name" VARCHAR(50) NOT NULL,
-	"questionId" integer NOT NULL,
-	"userRole" integer NOT NULL DEFAULT '0',
+	"questionId" INTEGER NOT NULL,
+	"userRole" INTEGER NOT NULL DEFAULT '0',
 	CONSTRAINT answer_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -27,10 +27,13 @@ CREATE TABLE "answer" (
 
 
 CREATE TABLE "user" (
-	"Id" serial NOT NULL,
+	"Id" SERIAL NOT NULL,
 	"login" VARCHAR(50) NOT NULL UNIQUE,
 	"password" VARCHAR(64) NOT NULL,
-	"userRoleId" integer NOT NULL DEFAULT '3',
+	"email" VARCHAR(100) UNIQUE NOT NULL,
+	"firstname" VARCHAR(100) NOT NULL,
+	"lastname" VARCHAR(100) NOT NULL,
+	"userRoleId" INTEGER NOT NULL DEFAULT '3',
 	CONSTRAINT user_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -39,7 +42,7 @@ CREATE TABLE "user" (
 
 
 CREATE TABLE "userRole" (
-	"Id" serial NOT NULL,
+	"Id" SERIAL NOT NULL,
 	"name" VARCHAR(50) NOT NULL,
 	"login" BOOLEAN NOT NULL DEFAULT 'true',
 	"register" BOOLEAN NOT NULL DEFAULT 'true',
@@ -51,11 +54,13 @@ CREATE TABLE "userRole" (
 
 
 CREATE TABLE "question" (
-	"Id" serial NOT NULL,
+	"Id" SERIAL NOT NULL,
 	"name" VARCHAR(100) NOT NULL,
 	"multiAnswer" BOOLEAN NOT NULL DEFAULT 'false',
-	"userRoleId" integer NOT NULL DEFAULT '0',
+	"userRoleId" INTEGER NOT NULL DEFAULT '0',
 	"publicated" BOOLEAN NOT NULL DEFAULT 'false',
+	"publicatedDate" TIMESTAMP NULL DEFAULT NOW()
+	"publicatedDateEnd" TIMESTAMP NULL,
 	CONSTRAINT question_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -64,8 +69,8 @@ CREATE TABLE "question" (
 
 
 CREATE TABLE "answerUser" (
-	"answerId" integer NOT NULL,
-	"userId" integer NOT NULL
+	"answerId" INTEGER NOT NULL,
+	"userId" INTEGER NOT NULL
 ) WITH (
   OIDS=FALSE
 );
@@ -73,8 +78,8 @@ CREATE TABLE "answerUser" (
 
 
 CREATE TABLE "token" (
-	"Id" serial NOT NULL,
-	"userId" integer NOT NULL UNIQUE,
+	"Id" SERIAL NOT NULL,
+	"userId" INTEGER NOT NULL UNIQUE,
 	"token" VARCHAR(64) NOT NULL UNIQUE,
 	CONSTRAINT token_pk PRIMARY KEY ("Id")
 ) WITH (
@@ -110,5 +115,5 @@ INSERT INTO public."userRole"(name)
 
 -- Insert admin
 
-INSERT INTO public."user"("Id", login, password, "userRoleId")
-	VALUES (1,'admin','e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35',3);
+INSERT INTO public."user"("Id", login, password, "userRoleId", email, firstname, lastname)
+	VALUES (1,'admin','e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35',3,'bartekziimny90@gmail.com','Bartłomiej','Zimny');
