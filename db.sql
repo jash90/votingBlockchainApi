@@ -17,8 +17,9 @@ CREATE DATABASE "votingOnlineDb"
 CREATE TABLE "answer" (
 	"Id" SERIAL NOT NULL,
 	"name" VARCHAR(50) NOT NULL,
+	"date" TIMESTAMP NOT NULL DEFAULT NOW(),
 	"questionId" INTEGER NOT NULL,
-	"userRole" INTEGER NOT NULL DEFAULT '0',
+	"userRole" INTEGER NOT NULL DEFAULT 0,
 	CONSTRAINT answer_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -89,7 +90,7 @@ CREATE TABLE "token" (
 
 
 ALTER TABLE "answer" ADD CONSTRAINT "answer_fk0" FOREIGN KEY ("questionId") REFERENCES "answer"("Id");
-ALTER TABLE "answer" ADD CONSTRAINT "answer_fk1" FOREIGN KEY ("userRole") REFERENCES "userRole"("Id");
+ALTER TABLE "answer" ADD CONSTRAINT "answer_fk1" FOREIGN KEY ("userRoleId") REFERENCES "userRole"("Id");
 
 ALTER TABLE "user" ADD CONSTRAINT "user_fk0" FOREIGN KEY ("userRoleId") REFERENCES "userRole"("Id");
 
