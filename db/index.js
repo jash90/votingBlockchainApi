@@ -14,7 +14,7 @@ module.exports = {
   auth: token =>
     pool
       .query(
-        `select "user"."userRoleId", "token", "token"."userId" 
+        `select "user"."userRoleId", "token", "token"."userId"
         from "token"
         inner join "user" on "token"."userId" = "user"."Id" where "token" = $1`,
         [token]

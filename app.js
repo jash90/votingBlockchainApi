@@ -12,14 +12,18 @@ var registerUser = require("./routes/auth/registerUser");
 
 var getQuestions = require("./routes/question/getQuestions");
 var addQuestion = require("./routes/question/addQuestion");
+var editQuestion = require("./routes/question/editQuestion");
 var removeQuestion = require("./routes/question/removeQuestion");
 
 var addAnswer = require("./routes/answer/addAnswer");
+var editAnswer = require("./routes/answer/editAnswer");
 var getAnswers = require("./routes/answer/getAnswers");
 
 var addAnswerUser = require("./routes/answerUser/addAnswerUser");
+var getAnswerUser = require("./routes/answerUser/getAnswerUsers");
 
 var getUserRole = require("./routes/userRole/getUserRole");
+var editUserRole = require("./routes/userRole/editUserRole");
 var addUserRole = require("./routes/userRole/addUserRole");
 var removeUserRole = require("./routes/userRole/removeUserRole");
 
@@ -43,15 +47,19 @@ app.use('/register',registerUser);
 app.use('/login', loginUser);
 
 app.use("/questions", getQuestions);
+app.use("/editquestion", editQuestion);
 app.use("/addquestion", addQuestion);
 app.use("/removequestions", removeQuestion);
 
 app.use("/addanswer", addAnswer);
+app.use("/editanswer",editAnswer);
 app.use("/answers", getAnswers);
 
 app.use("/addansweruser", addAnswerUser);
+app.use("/getansweruser", getAnswerUser);
 
 app.use("/adduserrole", addUserRole);
+app.use("/edituserrole", editUserRole);
 app.use("/removeuserrole", removeUserRole);
 app.use("/getuserrole",getUserRole);
 

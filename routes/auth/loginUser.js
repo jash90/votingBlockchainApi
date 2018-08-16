@@ -11,14 +11,14 @@ router.post("/", function(req, res) {
 
   pass = crypto.SHA256(pass).toString(crypto.enc.Hex);
 
-  db.query(`SELECT * FROM "user" where "login" = $1 AND "password" = $2`, [
-    user,
-    pass
-  ])
-    .then(function(data) {
+  db.query(
+    `SELECT "user"."Id", "user"."userRoleId" FROM "user" join "userRole" on "userRole"."Id" = "user"."userRoleId"
+where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = $2`,
+    [user, pass]
+  )
+    .then(data => {
       if (data.rowCount == 1) {
         var user = data.rows[0];
-
         db.query('Select * FROM "token" where "userId" = $1', [user.Id])
           .then(data2 => {
             if (data2.rowCount == 1) {
@@ -64,10 +64,7 @@ router.post("/", function(req, res) {
       }
     })
     .catch(error => {
-      res.json({
-        status: status.Error.code,
-        message: error
-      });
+      res.json({ status: status.Error.code, message: error });
     });
 });
 

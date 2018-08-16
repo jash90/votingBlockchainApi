@@ -10,7 +10,7 @@ const status = require("../../status");
     var token = req.body.token;
     db.auth(token).then(response => {
     var userId = response.data.userId;
-      if (response.status == 200 && response.data.userRoleId == 2) {
+      if (response.status == 200) {
         db.query(
           `INSERT INTO public."answerUser" ("answerId", "userId") VALUES ($1, $2);`,
           [answerId, userId]

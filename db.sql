@@ -19,7 +19,7 @@ CREATE TABLE "answer" (
 	"name" VARCHAR(50) NOT NULL,
 	"date" TIMESTAMP NOT NULL DEFAULT NOW(),
 	"questionId" INTEGER NOT NULL,
-	"userRole" INTEGER NOT NULL DEFAULT 0,
+	"userRoleId" INTEGER NOT NULL DEFAULT 3,
 	CONSTRAINT answer_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -34,7 +34,7 @@ CREATE TABLE "user" (
 	"email" VARCHAR(100) UNIQUE NOT NULL,
 	"firstname" VARCHAR(100) NOT NULL,
 	"lastname" VARCHAR(100) NOT NULL,
-	"userRoleId" INTEGER NOT NULL DEFAULT '3',
+	"userRoleId" INTEGER NOT NULL DEFAULT 3,
 	CONSTRAINT user_pk PRIMARY KEY ("Id")
 ) WITH (
   OIDS=FALSE
@@ -58,7 +58,7 @@ CREATE TABLE "question" (
 	"Id" SERIAL NOT NULL,
 	"name" VARCHAR(100) NOT NULL,
 	"multiAnswer" BOOLEAN NOT NULL DEFAULT 'false',
-	"userRoleId" INTEGER NOT NULL DEFAULT '0',
+	"userRoleId" INTEGER NOT NULL DEFAULT 3,
 	"publicated" BOOLEAN NOT NULL DEFAULT 'false',
 	"publicatedDate" TIMESTAMP NULL DEFAULT NOW()
 	"publicatedDateEnd" TIMESTAMP NULL,
@@ -71,7 +71,8 @@ CREATE TABLE "question" (
 
 CREATE TABLE "answerUser" (
 	"answerId" INTEGER NOT NULL,
-	"userId" INTEGER NOT NULL
+	"userId" INTEGER NOT NULL,
+	"date" TIMESTAMP NOT NULL DEFAULT NOW()
 ) WITH (
   OIDS=FALSE
 );
