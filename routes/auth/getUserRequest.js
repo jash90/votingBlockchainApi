@@ -6,21 +6,13 @@ const status = require("../../status");
 const crypto = require("crypto-js");
 
 router.post("/", (req, res) => {
-  var questionId = req.body.questionId;
-  var name = req.body.name;
-  var multiAnswer = req.body.multiAnswer;
-  var userRoleId = req.body.userRoleId;
   var token = req.body.token;
   db.auth(token).then(response => {
-    if (response.status == 200 && response.data.userRoleId == 2) {
-      db.query(
-        `UPDATE public.question
-	SET name=$1, "multiAnswer"=$2, "userRoleId"=$3
-	WHERE "Id" = $4`,
-        [name, multiAnswer, userRoleId, questionId]
-      )
+    if (response.status == 200 && response.data.userRoleId == 1) {
+      db.query(`select * from public."user" where "requestId" IS NOT NULL`)
         .then(data2 => {
           res.json({
+            data: data2.rows,
             status: status.OK.code,
             message: status.OK.message
           });

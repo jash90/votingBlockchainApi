@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 
 var loginUser = require("./routes/auth/loginUser");
 var registerUser = require("./routes/auth/registerUser");
+var getUserRequest = require("./routes/auth/getUserRequest");
+var changeUserRequest = require("./routes/auth/changeUserRequest");
 
 var getQuestions = require("./routes/question/getQuestions");
 var addQuestion = require("./routes/question/addQuestion");
@@ -45,6 +47,8 @@ app.use('/', routes);
 
 app.use('/register',registerUser);
 app.use('/login', loginUser);
+app.use('/getuserrequest',getUserRequest);
+app.use('/changeuserrequest', changeUserRequest);
 
 app.use("/questions", getQuestions);
 app.use("/editquestion", editQuestion);

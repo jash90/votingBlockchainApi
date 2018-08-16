@@ -48,8 +48,8 @@ where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = 
                 );
             } else {
               res.json({
-                status: status.Unauthorized.code,
-                message: status.Unauthorized.message
+                status: status.Error.code,
+                message: status.Error.message
               });
             }
           })
@@ -58,8 +58,8 @@ where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = 
           });
       } else {
         res.status(200).json({
-          status: status.LoginOrPasswordIncorrect.code,
-          message: status.LoginOrPasswordIncorrect.message
+          status: status.DeniedLogin.code,
+          message: status.DeniedLogin.message
         });
       }
     })

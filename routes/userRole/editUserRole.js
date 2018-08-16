@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
         if (response.status == 200 && response.data.userRoleId == 1) {
             db.query(
                 `UPDATE public."userRole"
-	name=$1, "login"=$2, "register"=$3
+	SET name=$1, "login"=$2, "register"=$3
 	WHERE "Id" = $4`,
                 [name, login, register, userRoleId]
             )

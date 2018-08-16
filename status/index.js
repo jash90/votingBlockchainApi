@@ -19,5 +19,13 @@ module.exports = {
   LoginOrPasswordIncorrect: {
     code: 402,
     message: "LoginOrPasswordIncorrect"
+  },
+  DeniedLogin:{
+    code:403,
+    message:"DeniedLogin"
+  },
+  DeniedRegister: {
+    code: 403,
+    message: "DeniedRegister"
   }
 };
