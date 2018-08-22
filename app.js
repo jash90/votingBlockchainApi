@@ -17,16 +17,17 @@ var addQuestion = require("./routes/question/addQuestion");
 var editQuestion = require("./routes/question/editQuestion");
 var removeQuestion = require("./routes/question/removeQuestion");
 
+var getAnswers = require("./routes/answer/getAnswers");
 var addAnswer = require("./routes/answer/addAnswer");
 var editAnswer = require("./routes/answer/editAnswer");
-var getAnswers = require("./routes/answer/getAnswers");
+var removeAnswer = require("./routes/answer/removeAnswer");
 
 var addAnswerUser = require("./routes/answerUser/addAnswerUser");
 var getAnswerUser = require("./routes/answerUser/getAnswerUsers");
 
 var getUserRole = require("./routes/userRole/getUserRole");
-var editUserRole = require("./routes/userRole/editUserRole");
 var addUserRole = require("./routes/userRole/addUserRole");
+var editUserRole = require("./routes/userRole/editUserRole");
 var removeUserRole = require("./routes/userRole/removeUserRole");
 
 var app = express();
@@ -55,17 +56,19 @@ app.use("/editquestion", editQuestion);
 app.use("/addquestion", addQuestion);
 app.use("/removequestions", removeQuestion);
 
+app.use("/answers", getAnswers);
 app.use("/addanswer", addAnswer);
 app.use("/editanswer",editAnswer);
-app.use("/answers", getAnswers);
+app.use("/removeanswer",removeAnswer)
 
 app.use("/addansweruser", addAnswerUser);
 app.use("/getansweruser", getAnswerUser);
 
+app.use("/getuserrole", getUserRole);
 app.use("/adduserrole", addUserRole);
 app.use("/edituserrole", editUserRole);
 app.use("/removeuserrole", removeUserRole);
-app.use("/getuserrole",getUserRole);
+
 
 
 
