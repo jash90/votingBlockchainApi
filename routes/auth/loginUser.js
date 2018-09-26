@@ -20,7 +20,7 @@ where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = 
       if (data.rowCount == 1) {
         var user = data.rows[0];
         db
-          .query('Select * FROM "token" where "userId" = $1', [user.Id])
+          .query('Select * FROM "token" where "userId" = $1', [user.id])
           .then(data2 => {
             if (data2.rowCount == 1) {
               var token = data2.rows[0];
@@ -37,7 +37,7 @@ where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = 
                 .SHA256(user + new Date().toString())
                 .toString(crypto.enc.Hex);
               db
-                .query(`INSERT INTO public.token( "userId", token) VALUES ( $1, $2);`, [user.Id, token])
+                .query(`INSERT INTO public.token( "userId", token) VALUES ( $1, $2);`, [user.id, token])
                 .then(data => {
                   res.json({
                     data: {
