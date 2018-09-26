@@ -12,7 +12,8 @@ var registerUser = require("./routes/auth/registerUser");
 var getUserRequest = require("./routes/auth/getUserRequest");
 var changeUserRequest = require("./routes/auth/changeUserRequest");
 
-var getQuestions = require("./routes/question/getQuestions");
+var getQuestionsMod = require("./routes/question/getQuestionsMod");
+var getQuestionsUser = require("./routes/question/getQuestionsUser");
 var addQuestion = require("./routes/question/addQuestion");
 var editQuestion = require("./routes/question/editQuestion");
 var removeQuestion = require("./routes/question/removeQuestion");
@@ -51,7 +52,8 @@ app.use('/login', loginUser);
 app.use('/getuserrequest',getUserRequest);
 app.use('/changeuserrequest', changeUserRequest);
 
-app.use("/questions", getQuestions);
+app.use("/questionsMod", getQuestionsMod);
+app.use("/questionsUser", getQuestionsUser);
 app.use("/editquestion", editQuestion);
 app.use("/addquestion", addQuestion);
 app.use("/removequestions", removeQuestion);

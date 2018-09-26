@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
         if (Number(userRoleId) == 0) {
           db
             .query(`delete from public."user"
-	WHERE "Id" = $1`, [Id])
+	WHERE "id" = $1`, [Id])
             .then(data => {
               res.json({status: status.OK.code, message: status.OK.message});
             })
@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
           db
             .query(`UPDATE public."user"
 	SET "userRoleId"=$2, "requestId"=$3 
-	WHERE "Id" = $1`, [Id, userRoleId, requestId])
+	WHERE "id" = $1`, [Id, userRoleId, requestId])
             .then(data2 => {
               res.json({status: status.OK.code, message: status.OK.message});
             })

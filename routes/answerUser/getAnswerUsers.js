@@ -15,9 +15,9 @@ router.post("/", (req, res) => {
         db
           .query(`select "question"."name","answer"."name", "answer"."date","question"."publicatedDate", "question"."publicatedDateEnd"
 from "answerUser"
-join "answer" on "answer"."Id" = "answerUser"."answerId"
-join "question" on "question"."Id" = "answer"."questionId"
-where "question"."Id" = $1 and ("question"."publicatedDateEnd" < NOW() or "answerUser"."userId" =$2)`, [questionId, userId])
+join "answer" on "answer"."id" = "answerUser"."answerId"
+join "question" on "question"."id" = "answer"."questionId"
+where "question"."id" = $1 and ("question"."publicatedDateEnd" < NOW() or "answerUser"."userId" =$2)`, [questionId, userId])
           .then(data2 => {
             if (data2.rowCount == 0) {
               db

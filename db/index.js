@@ -16,7 +16,7 @@ module.exports = {
       .query(
         `select "user"."userRoleId", "token", "token"."userId"
         from "token"
-        inner join "user" on "token"."userId" = "user"."Id" where "token" = $1`,
+        inner join "user" on "token"."userId" = "user"."id" where "token" = $1`,
         [token]
       )
       .then(data => {

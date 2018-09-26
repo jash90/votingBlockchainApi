@@ -4,21 +4,15 @@ const db = require("../../db");
 const status = require("../../status");
 
 router.post("/", (req, res) => {
-    var name = req.body.name;
-    var login = req.body.login;
-    var register = req.body.register;
-    var userRoleId = req.body.userRoleId;
     var token = req.body.token;
     db
         .auth(token)
         .then(response => {
-            if (response.status == 200 && response.data.userRoleId == 1) {
-                db
-                    .query(`UPDATE public."userRole"
-	SET name=$1, "login"=$2, "register"=$3
-	WHERE "id" = $4`, [name, login, register, userRoleId])
+            if (response.status == 200) {
+                var userRoleId = response.data.userRoleId;
+                db.query('Select * FROM "question" from "userRoleId" = $1', [userRoleId])
                     .then(data2 => {
-                        res.json({status: status.OK.code, message: status.OK.message});
+                        res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
                     })
                     .catch(error2 => {
                         res.json({status: status.Error.code, message: error2.detail});

@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
         db
           .query(`UPDATE public."answer"
 	SET name=$1, "questionId"=$2
-	WHERE "Id" = $3`, [name, questionId, answerId])
+	WHERE "id" = $3`, [name, questionId, answerId])
           .then(data2 => {
             res.json({status: status.OK.code, message: status.OK.message});
           })

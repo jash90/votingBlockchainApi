@@ -9,8 +9,8 @@ router.post("/", (req, res) => {
     .auth(token)
     .then(response => {
       if (response.status == 200) {
-        db
-          .query('Select * FROM "question"')
+        var userId = response.data.userId;
+        db.query('Select * FROM "question" from "createdById" = $1',[userId])
           .then(data2 => {
             res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
           })

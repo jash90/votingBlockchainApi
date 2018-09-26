@@ -14,7 +14,7 @@ router.post("/", function (req, res) {
     .toString(crypto.enc.Hex);
 
   db
-    .query(`SELECT "user"."Id", "user"."userRoleId" FROM "user" join "userRole" on "userRole"."Id" = "user"."userRoleId"
+    .query(`SELECT "user"."id", "user"."userRoleId" FROM "user" join "userRole" on "userRole"."id" = "user"."userRoleId"
 where "userRole"."login" = true and "user"."login" = $1 AND "user"."password" = $2`, [user, pass])
     .then(data => {
       if (data.rowCount == 1) {

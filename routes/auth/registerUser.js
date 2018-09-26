@@ -21,7 +21,7 @@ router.post("/", function (req, res) {
   db
     .query(`select *
 from "userRole"
-where "Id" = $1 and "register" = true`, [userRoleId])
+where "id" = $1 and "register" = true`, [userRoleId])
     .then(data => {
       if (data.rowCount == 0) {
         res
