@@ -8,10 +8,16 @@ const crypto = require("crypto-js");
 router.post("/", function (req, res) {
   var user = req.body.username;
   var pass = req.body.password;
-  var firstname = req.body.firstname;
-  var lastname = req.body.lastname;
+  var firstname = "";
+  var lastname = "";
   var email = req.body.email;
   var userRoleId = 3;
+  if (req.body.firstname != undefined) {
+    firstname = req.body.firstname;
+  }
+  if (req.body.lastname != undefined) {
+    lastname = req.body.lastname;
+  }
   if (req.body.userRoleId != undefined) {
     userRoleId = req.body.userRoleId;
   }
@@ -30,7 +36,14 @@ where "id" = $1 and "register" = true`, [userRoleId])
       } else {
         db
           .query(`INSERT INTO public."user" (login, password, "userRoleId", "email","firstname","lastname")
-	VALUES($1, $2, $3, $4, $5, $6);`, [user, pass, userRoleId, email, firstname, lastname])
+	VALUES($1, $2, $3, $4, $5, $6);`, [
+          user,
+          pass,
+          userRoleId,
+          email,
+          firstname,
+          lastname
+        ])
           .then(data => {
             res
               .status(200)
