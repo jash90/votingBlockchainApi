@@ -10,12 +10,12 @@ router.post("/", (req, res) => {
     .then(response => {
       if (response.status == 200) {
         var userId = response.data.userId;
-        db.query('Select * FROM "question" from "createdById" = $1',[userId])
+        db.query('Select * FROM "question" where "createdById" = $1',[userId])
           .then(data2 => {
             res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
           })
           .catch(error2 => {
-            res.json({status: status.Error.code, message: error2.detail});
+            res.json({status: status.Error.code, message: "test"});
           });
       } else {
         res.json({status: status.Unauthorized.code, message: status.Unauthorized.message});

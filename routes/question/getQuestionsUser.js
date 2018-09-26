@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
         .then(response => {
             if (response.status == 200) {
                 var userRoleId = response.data.userRoleId;
-                db.query('Select * FROM "question" from "userRoleId" = $1', [userRoleId])
+                db.query('Select * FROM "question" where "userRoleId" = $1', [userRoleId])
                     .then(data2 => {
                         res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
                     })
