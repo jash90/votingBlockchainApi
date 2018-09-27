@@ -10,11 +10,12 @@ router.post("/", (req, res) => {
         .then(response => {
             if (response.status == 200) {
                 var userRoleId = response.data.userRoleId;
+                var userId = response.data.userId;
                 db.query(`select "question"."name","answer"."name", "answer"."date","question"."publicatedDate", "question"."publicatedDateEnd"
                     from "answerUser"
                     join "answer" on "answer"."id" = "answerUser"."answerId"
                     right join "question" on "question"."id" = "answer"."questionId"
-                    where "answerUser"."userId" = 3 OR "answerUser"."userId" IS NULL`, [userRoleId])
+                    where ("answerUser"."userId" = $1 OR "answerUser"."userId" IS NULL )AND "question"."userRoleId"=$2`, [userRoleId, userId])
                     .then(data2 => {
                         res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
                     })
