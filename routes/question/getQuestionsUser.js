@@ -10,7 +10,11 @@ router.post("/", (req, res) => {
         .then(response => {
             if (response.status == 200) {
                 var userRoleId = response.data.userRoleId;
-                db.query('Select * FROM "question" where "userRoleId" = $1', [userRoleId])
+                db.query(`select "question"."name","answer"."name", "answer"."date","question"."publicatedDate", "question"."publicatedDateEnd"
+                    from "answerUser"
+                    join "answer" on "answer"."id" = "answerUser"."answerId"
+                    right join "question" on "question"."id" = "answer"."questionId"
+                    where "answerUser"."userId" = 3 OR "answerUser"."userId" IS NULL`, [userRoleId])
                     .then(data2 => {
                         res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
                     })

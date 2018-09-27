@@ -1,5 +1,5 @@
 CREATE USER admin WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT NOREPLICATION CONNECTION
-LIMIT - 1 PASSWORD 'admin';
+LIMIT - 1 PASSWORD 'psB2r#e4';
 
 CREATE DATABASE "votingOnlineDb" WITH OWNER = admin ENCODING = 'UTF8' CONNECTION
 LIMIT = - 1;
@@ -21,7 +21,7 @@ CREATE TABLE "user" (
     "firstname" VARCHAR(100) NOT NULL,
     "lastname" VARCHAR(100) NOT NULL,
     "userRoleId" INTEGER NOT NULL DEFAULT 3,
-	"requestId" INTEGER NULL DEFAULT NULL,
+    "requestId" INTEGER NULL DEFAULT NULL,
     CONSTRAINT user_pk PRIMARY KEY ("id"))
 WITH (OIDS = FALSE);
 
@@ -82,7 +82,7 @@ ALTER TABLE "answerUser"
 ALTER TABLE "token"
     ADD CONSTRAINT "token_fk0" FOREIGN KEY ("userId") REFERENCES "user" ("id");
 
--- Create userRole
+-- Insert userRole
 INSERT INTO public. "userRole" ("name")
     VALUES ('admin');
 
@@ -95,7 +95,58 @@ INSERT INTO public. "userRole" ("name")
 INSERT INTO public. "userRole" ("id", "name", "login", "register")
     VALUES (4, 'request', FALSE, TRUE);
 
--- Insert admin
+-- Insert users
 INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
-    VALUES (1, 'admin', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'bartekziimny90@gmail.com', 'Bartłomiej', 'Zimny');
+    VALUES (1, 'admin', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 1, 'bartekziimny90@gmail.com', 'Bartłomiej', 'Zimny');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (2, 'mod', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 2, 'mod@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (3, 'user', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user@gmail.com', '', '');
+
+-- Insert question
+INSERT INTO public.question ("id", "name", "createdById")
+    VALUES (1, 'Czy lubisz koty ?', 2);
+
+INSERT INTO public.question ("id", "name", "createdById")
+    VALUES (2, 'Czy lubisz psy ?', 2);
+
+INSERT INTO public.question ("id", "name", "createdById")
+    VALUES (3, 'Czy lubisz słodycze ?', 2);
+
+-- Insert answer
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (1, 'Tak', 1);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (2, 'Nie', 1);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (3, 'Nie wiem', 1);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (4, 'Tak', 2);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (5, 'Nie', 2);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (6, 'Nie wiem', 2);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (7, 'Tak', 3);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (8, 'Nie', 3);
+
+INSERT INTO public.answer (id, name, "questionId")
+    VALUES (9, 'Nie wiem', 3);
+
+-- Insert answerUser
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (1, 3);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (4, 3);
 
