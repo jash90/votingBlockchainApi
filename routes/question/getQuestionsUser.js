@@ -11,7 +11,7 @@ router.post("/", (req, res) => {
             if (response.status == 200) {
                 var userRoleId = response.data.userRoleId;
                 var userId = response.data.userId;
-                db.query(`select "question"."name" as "questionName","answer"."name" as "answerName", "answer"."date" as "answerDate","question"."publicatedDate", "question"."publicatedDateEnd"
+                db.query(`select "question"."id" as "questionId","question"."name" as "questionName","answer"."id" as "answerId","answer"."name" as "answerName", "answer"."date" as "answerDate","question"."publicatedDate", "question"."publicatedDateEnd"
                     from "answerUser"
                     join "answer" on "answer"."id" = "answerUser"."answerId"
                     right join "question" on "question"."id" = "answer"."questionId"
