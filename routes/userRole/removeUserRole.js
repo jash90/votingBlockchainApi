@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
   db
     .auth(token)
     .then(response => {
-      if (response.status == 200 && response.data.userRoleId == 1 && id != 1) {
+      if (response.status == 200 && response.data.userRoleId == 1 && userRoleId != 1) {
         db
           .query(`DELETE FROM public."userRole"
 	WHERE id = $1`, [userRoleId])
