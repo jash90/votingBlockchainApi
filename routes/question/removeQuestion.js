@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
       if (response.status == 200 && response.data.userRoleId == 2) {
         db
           .query(`DELETE FROM public.question
-	WHERE Id = $1`, [questionId])
+	WHERE id = $1`, [questionId])
           .then(data2 => {
             res.json({status: status.OK.code, message: status.OK.message});
           })

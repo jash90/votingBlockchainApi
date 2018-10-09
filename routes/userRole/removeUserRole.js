@@ -9,10 +9,10 @@ router.post("/", (req, res) => {
   db
     .auth(token)
     .then(response => {
-      if (response.status == 200 && response.data.userRoleId == 1 && Id != 1) {
+      if (response.status == 200 && response.data.userRoleId == 1 && id != 1) {
         db
           .query(`DELETE FROM public."userRole"
-	WHERE Id = $1`, [userRoleId])
+	WHERE id = $1`, [userRoleId])
           .then(data2 => {
             res.json({status: status.OK.code, message: status.OK.message});
           })

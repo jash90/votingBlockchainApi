@@ -4,7 +4,7 @@ const db = require("../../db");
 const status = require("../../status");
 
 router.post("/", (req, res) => {
-  var Id = req.body.id;
+  var id = req.body.id;
   var requestId = null;
   var userRoleId = req.body.userRoleId;
   var token = req.body.token;
@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
         if (Number(userRoleId) == 0) {
           db
             .query(`delete from public."user"
-	WHERE "id" = $1`, [Id])
+	WHERE "id" = $1`, [id])
             .then(data => {
               res.json({status: status.OK.code, message: status.OK.message});
             })
