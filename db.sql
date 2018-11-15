@@ -105,9 +105,36 @@ INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firs
 INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
     VALUES (3, 'user', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user@gmail.com', '', '');
 
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (4, 'user1', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user1@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (5, 'user2', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user2@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (6, 'user3', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user3@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (7, 'user4', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user4@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (8, 'user5', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user5@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (9, 'user6', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user6@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (10, 'user7', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user7@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (11, 'user8', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user8@gmail.com', '', '');
+
+INSERT INTO public. "user" ("id", "login", "password", "userRoleId", email, firstname, lastname)
+    VALUES (12, 'user9', 'e6e8601e3d2c975cb9347de7ad12da9af3a645570d398057a1d01999d29b1a35', 3, 'user9@gmail.com', '', '');
+
 -- Insert question
-INSERT INTO public.question ("id", "name", "createdById")
-    VALUES (1, 'Czy lubisz koty ?', 2);
+INSERT INTO public.question ("id", "name", "createdById", "publicated", "publicatedDateEnd")
+    VALUES (1, 'Czy lubisz koty ?', 2, TRUE, CURRENT_TIMESTAMP + interval '76 hours');
 
 INSERT INTO public.question ("id", "name", "createdById")
     VALUES (2, 'Czy lubisz psy ?', 2);
@@ -148,5 +175,28 @@ INSERT INTO public. "answerUser" ("answerId", "userId")
     VALUES (1, 3);
 
 INSERT INTO public. "answerUser" ("answerId", "userId")
-    VALUES (4, 3);
+    VALUES (2, 4);
 
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (1, 5);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (3, 6);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (2, 7);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (2, 8);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (1, 9);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (1, 10);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (3, 11);
+
+INSERT INTO public. "answerUser" ("answerId", "userId")
+    VALUES (1, 12);
