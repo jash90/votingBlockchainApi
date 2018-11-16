@@ -3,6 +3,31 @@ var router = require("express").Router();
 const db = require("../../db");
 const status = require("../../status");
 
+const SQL = 
+`
+            SELECT
+                "question"."id" AS "questionId",
+                "question"."name" AS "questionName",
+                "answer"."id" AS "answerId",
+                "answer"."name" AS "answerName",
+                "answer"."date" AS "answerDate",
+                "question"."publicatedDate",
+                "question"."publicatedDateEnd"
+            FROM
+                "answerUser"
+                JOIN "answer" ON "answer"."id" = "answerUser"."answerId"
+                FULL OUTER JOIN "question" ON "question"."id" = "answer"."questionId"
+            WHERE
+                "answerUser"."userId" = $1
+                OR "answer"."id" IS NULL
+                OR "answer"."name" IS NULL
+                OR "answer"."date" IS NULL
+                OR "question"."userRoleId" = $2
+            ORDER BY
+                "question"."publicatedDate",
+                "answerUser"."userId"
+`;
+
 router.post("/", (req, res) => {
     var token = req.body.token;
     db
@@ -11,11 +36,7 @@ router.post("/", (req, res) => {
             if (response.status == 200) {
                 var userRoleId = response.data.userRoleId;
                 var userId = response.data.userId;
-                db.query(`select "question"."id" as "questionId","question"."name" as "questionName","answer"."id" as "answerId","answer"."name" as "answerName", "answer"."date" as "answerDate","question"."publicatedDate", "question"."publicatedDateEnd"
-                    from "answerUser"
-                    join "answer" on "answer"."id" = "answerUser"."answerId"
-                    right join "question" on "question"."id" = "answer"."questionId"
-                    where "answerUser"."userId" = $1 OR "question"."userRoleId"=$2`, [userRoleId, userId])
+                db.query(SQL, [userRoleId, userId])
                     .then(data2 => {
                         res.json({data: data2.rows, status: status.OK.code, message: status.OK.message});
                     })
