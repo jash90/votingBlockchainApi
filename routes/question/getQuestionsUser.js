@@ -5,27 +5,27 @@ const status = require("../../status");
 
 const SQL = 
 `
-            SELECT
-                "question"."id" AS "questionId",
-                "question"."name" AS "questionName",
-                "answer"."id" AS "answerId",
-                "answer"."name" AS "answerName",
-                "answer"."date" AS "answerDate",
-                "question"."publicatedDate",
-                "question"."publicatedDateEnd"
-            FROM
-                "answerUser"
-                JOIN "answer" ON "answer"."id" = "answerUser"."answerId"
-                FULL OUTER JOIN "question" ON "question"."id" = "answer"."questionId"
-            WHERE
-                "answerUser"."userId" = $1
-                OR "answer"."id" IS NULL
-                OR "answer"."name" IS NULL
-                OR "answer"."date" IS NULL
-                OR "question"."userRoleId" = $2
-            ORDER BY
-                "question"."publicatedDate",
-                "answerUser"."userId"
+SELECT
+    "question"."id" AS "questionId",
+    "question"."name" AS "questionName",
+    "answer"."id" AS "answerId",
+    "answer"."name" AS "answerName",
+    "answer"."date" AS "answerDate",
+    "question"."publicatedDate",
+    "question"."publicatedDateEnd"
+FROM
+    "answerUser"
+    JOIN "answer" ON "answer"."id" = "answerUser"."answerId"
+    FULL OUTER JOIN "question" ON "question"."id" = "answer"."questionId"
+WHERE
+    "question"."userRoleId" = $1
+    AND "answerUser"."userId" = $2
+    OR "answer"."id" IS NULL
+    OR "answer"."name" IS NULL
+    OR "answer"."date" IS NULL
+ORDER BY
+    "question"."publicatedDate",
+    "answerUser"."userId"
 `;
 
 router.post("/", (req, res) => {
